@@ -10,18 +10,13 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const webpack = require('webpack-stream');
 const babel = require('gulp-babel');
-const imagemin = require('gulp-imagemin');
 const changed = require('gulp-changed');
 const typograf = require('gulp-typograf');
 const svgsprite = require('gulp-svg-sprite');
 const replace = require('gulp-replace');
 const webpHTML = require('gulp-webp-retina-html');
-const imageminWebp = require('imagemin-webp');
-const rename = require('gulp-rename');
-
-const cwebpBinaryPath = './node_modules/cwebp-bin/vendor/cwebp';
-const hasCwebpBinary = () => fs.existsSync(cwebpBinaryPath);
 const prettier = require('@bdchauvette/gulp-prettier');
+const { canUseCwebp, generateWebpImages } = require('./utils/webp-utils');
 
 
 gulp.task('clean:dev', function (done) {
@@ -49,7 +44,7 @@ const plumberNotify = (title) => {
 };
 
 gulp.task('html:dev', function () {
-	return gulp
+	let stream = gulp
 		.src([
 			'./src/html/**/*.html',
 			'!./**/blocks/**/*.*',
@@ -78,8 +73,10 @@ gulp.task('html:dev', function () {
 					['<no-typography>', '</no-typography>'],
 				],
 			})
-		)
-		.pipe(
+		);
+
+	if (canUseCwebp()) {
+		stream = stream.pipe(
 			webpHTML({
 				extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
 				retina: {
@@ -87,7 +84,10 @@ gulp.task('html:dev', function () {
 					2: '@2x',
 				},
 			})
-		)
+		);
+	}
+
+	return stream
 		.pipe(
 			prettier({
 				tabWidth: 4,
@@ -119,31 +119,19 @@ gulp.task('sass:dev', function () {
 });
 
 gulp.task('images:dev', function () {
-	if (!hasCwebpBinary()) {
-		return gulp
-			.src(['./src/img/**/*', '!./src/img/svgicons/**/*'])
-			.pipe(changed('./build/img/'))
-			.pipe(gulp.dest('./build/img/'));
+	if (canUseCwebp()) {
+		generateWebpImages({
+			srcRoot: './src/img',
+			destRoot: './build/img',
+			exclude: ['./src/img/svgicons'],
+			quality: 85,
+		});
 	}
 
-	return (
-		gulp
-			.src(['./src/img/**/*', '!./src/img/svgicons/**/*'])
-			.pipe(changed('./build/img/'))
-			.pipe(
-				imagemin([
-					imageminWebp({
-						quality: 85,
-					}),
-				])
-			)
-			.pipe(rename({ extname: '.webp' }))
-			.pipe(gulp.dest('./build/img/'))
-			.pipe(gulp.src(['./src/img/**/*', '!./src/img/svgicons/**/*']))
-			.pipe(changed('./build/img/'))
-			// .pipe(imagemin({ verbose: true }))
-			.pipe(gulp.dest('./build/img/'))
-	);
+	return gulp
+		.src(['./src/img/**/*', '!./src/img/svgicons/**/*'])
+		.pipe(changed('./build/img/'))
+		.pipe(gulp.dest('./build/img/'));
 });
 
 const svgStack = {
