@@ -1,0 +1,60 @@
+<header class="header" itemscope itemtype="https://schema.org/LocalBusiness">
+	<div class="container">
+		<div class="header__row">
+			<a
+				class="header__logo logo"
+				href="./index.html"
+				aria-label="Эвакуатор 24 часа — главная страница"
+				itemprop="url"
+			>
+				<span class="logo__mark" aria-hidden="true"></span>
+				<span class="logo__text" itemprop="name">Эвакуатор 24 часа</span>
+			</a>
+
+			<nav class="header__nav nav" aria-label="Основная навигация">
+				<ul class="nav__list">
+					<li class="nav__item"><a href="#services" class="nav__link">Услуги</a></li>
+					<li class="nav__item"><a href="#rates" class="nav__link">Тарифы</a></li>
+					<li class="nav__item"><a href="#reviews" class="nav__link">Отзывы</a></li>
+					<li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
+				</ul>
+			</nav>
+
+			<div class="header__contacts">
+				<address class="header__address">
+					<a
+						class="header__phone"
+						href="tel:+79052003333"
+						aria-label="Позвонить в службу эвакуации 8 905 200 33 33"
+						itemprop="telephone"
+					>
+						8 (905) 200-33-33
+					</a>
+				</address>
+
+				<a class="header__button" href="#request-form">Вызвать эвакуатор</a>
+			</div>
+
+			<div class="header__mobile-contacts" aria-label="Быстрые контакты">
+				<a
+					class="header__mobile-button"
+					href="tel:+79052003333"
+					aria-label="Позвонить в службу эвакуации 8 905 200 33 33"
+				>
+					Вызвать эвакуатор
+				</a>
+			</div>
+
+			<button
+				class="mobile-nav-btn"
+				type="button"
+				aria-label="Открыть мобильное меню"
+				aria-expanded="false"
+				aria-controls="mobile-nav"
+			>
+				<div class="nav-icon"></div>
+			</button>
+		</div>
+	</div>
+</header>
+@@include('mobile-nav.html')

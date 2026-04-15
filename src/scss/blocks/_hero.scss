@@ -1,0 +1,246 @@
+.hero {
+	padding: 40px 0 84px;
+	background: transparent;
+	color: #ffffff;
+
+	&__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 488px;
+		column-gap: 48px;
+		align-items: start;
+	}
+
+	&__content {
+		padding-top: 0;
+	}
+
+	&__badge {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		min-height: 40px;
+		padding: 8px 16px 8px 28px;
+		margin-bottom: 34px;
+		border: 1px solid rgba(255, 144, 32, 0.22);
+		border-radius: 999px;
+		background: rgba(255, 145, 32, 0.08);
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #ff9b1c;
+	}
+
+	&__badge::before {
+		content: '';
+		position: absolute;
+		left: 14px;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #ff9b1c;
+		box-shadow: 0 0 0 5px rgba(255, 155, 28, 0.16);
+	}
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		row-gap: 16px;
+		margin-bottom: 30px;
+		font-size: 5.5rem;
+		font-weight: 700;
+		line-height: 0.9;
+		letter-spacing: -0.05em;
+	}
+
+	&__title-line {
+		display: block;
+		max-width: 620px;
+	}
+
+	&__title-line--accent {
+		color: #ff8512;
+	}
+
+	&__description {
+		max-width: 560px;
+		margin-bottom: 38px;
+	}
+
+	&__description-text {
+		font-size: 1.5rem;
+		line-height: 1.55;
+		color: rgba(255, 255, 255, 0.72);
+	}
+
+	&__description-text + &__description-text {
+		margin-top: 10px;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		column-gap: 28px;
+		margin-bottom: 36px;
+	}
+
+	&__action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 218px;
+		min-height: 68px;
+		padding: 16px 28px;
+		border-radius: 16px;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		font-size: 1.25rem;
+		font-weight: 700;
+		line-height: 1;
+		color: #ffffff;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+	}
+
+	&__action:hover {
+		color: #ffffff;
+	}
+
+	&__action--primary {
+		border-color: transparent;
+		background: linear-gradient(180deg, #ff9b1c 0%, #ff7b0d 100%);
+		box-shadow:
+			0 16px 30px rgba(255, 128, 16, 0.22),
+			inset 0 1px 0 rgba(255, 255, 255, 0.22);
+	}
+
+	&__action--secondary {
+		background: rgba(255, 255, 255, 0.02);
+	}
+
+	&__benefits {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 28px;
+		row-gap: 12px;
+	}
+
+	&__benefit {
+		position: relative;
+		padding-left: 18px;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		line-height: 1.4;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: rgba(255, 255, 255, 0.44);
+	}
+
+	&__benefit::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 8px;
+		width: 7px;
+		height: 7px;
+		border: 1px solid rgba(255, 143, 27, 0.8);
+		border-radius: 50%;
+	}
+
+	&__media {
+		padding-top: 40px;
+	}
+
+	&__map {
+		position: relative;
+		margin: 0;
+	}
+
+	&__map-label {
+		position: absolute;
+		top: 18px;
+		left: 18px;
+		z-index: 1;
+		font-size: 1.375rem;
+		font-weight: 700;
+		line-height: 1;
+		color: rgba(15, 15, 15, 0.92);
+	}
+
+	&__map-picture {
+		display: block;
+		overflow: hidden;
+		border-radius: 32px;
+		background: #d6e1dc;
+		box-shadow:
+			0 28px 42px rgba(0, 0, 0, 0.24),
+			inset 0 1px 0 rgba(255, 255, 255, 0.18);
+	}
+
+	&__map-image {
+		display: block;
+		width: 100%;
+		height: 560px;
+		object-fit: cover;
+	}
+
+	&__map-summary {
+		position: absolute;
+		left: 24px;
+		bottom: 26px;
+		min-width: 262px;
+		padding: 18px 20px 20px;
+		border-radius: 22px;
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(18px);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+	}
+
+	&__map-summary-text {
+		margin-bottom: 14px;
+		font-size: 0.6875rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-transform: uppercase;
+		letter-spacing: 0.16em;
+		color: rgba(255, 255, 255, 0.62);
+	}
+
+	&__map-rating {
+		display: flex;
+		align-items: center;
+		column-gap: 12px;
+		margin-bottom: 14px;
+	}
+
+	&__map-rating-value {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	&__map-rating-stars {
+		font-size: 1rem;
+		line-height: 1;
+		letter-spacing: 0.18em;
+		color: #ff9b1c;
+	}
+
+	&__map-platforms {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	&__map-platform {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 38px;
+		padding: 8px 14px;
+		border-radius: 12px;
+		background: rgba(255, 255, 255, 0.14);
+		font-size: 0.875rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+}

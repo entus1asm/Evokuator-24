@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800);
+
+html {
+	scroll-behavior: smooth;
+	background-color: var(--page-bg);
+	scrollbar-gutter: stable;
+}
+
+body {
+	min-width: 320px;
+	background-color: var(--page-bg);
+	background-image:
+		radial-gradient(circle at 18% 22%, rgba(255, 129, 18, 0.18), transparent 34%),
+		linear-gradient(96deg, #241308 0%, #0a0b0c 100%);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 100% 980px;
+	color: var(--text-color);
+	font-family: var(--font-main);
+	font-size: 16px;
+	line-height: 1.5;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img {
+	display: block;
+}
+
+a {
+	color: var(--link-color);
+	transition: color 0.2s ease-in;
+}
+
+a:hover {
+	color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-titles);
+	line-height: 1.1;
+}
+
+.title-1 {
+	font-size: clamp(2rem, 4vw, 3.5rem);
+	font-weight: 700;
+}
+
+.title-2 {
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
+	font-weight: 700;
+}
+
+code {
+	background-color: #e9f1f6;
+	padding: 0.2rem 0.35rem;
+	border-radius: 4px;
+}
+
+pre.code {
+	overflow-x: auto;
+	background-color: #e9f1f6;
+	padding: 1rem;
+	border-radius: 4px;
+}
