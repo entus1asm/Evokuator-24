@@ -2,6 +2,7 @@ function mobileNav() {
 	const navBtn = document.querySelector('.mobile-nav-btn');
 	const nav = document.querySelector('.mobile-nav');
 	const menuIcon = document.querySelector('.nav-icon');
+	const closeBtn = document.querySelector('.mobile-nav__close');
 	const navLinks = document.querySelectorAll('.mobile-nav a');
 
 	if (!navBtn || !nav || !menuIcon) {
@@ -46,6 +47,10 @@ function mobileNav() {
 	navLinks.forEach((link) => {
 		link.addEventListener('click', closeMobileNav);
 	});
+
+	if (closeBtn) {
+		closeBtn.addEventListener('click', closeMobileNav);
+	}
 
 	nav.addEventListener('click', (event) => {
 		if (event.target === nav) {

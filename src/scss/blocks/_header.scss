@@ -10,7 +10,7 @@
 		column-gap: 32px;
 		min-height: 72px;
 		padding: 10px 12px 10px 16px;
-		background: rgba(19, 15, 12, 0.92);
+		background: rgba(19, 15, 12, 0.9);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		backdrop-filter: blur(5px);
 		border-radius: 20px;
@@ -75,10 +75,7 @@
 		min-height: 48px;
 		padding: 12px 24px;
 		border-radius: 14px;
-		background: linear-gradient(180deg, #ff9b1c 0%, #ff7b0d 100%);
-		box-shadow:
-			0 10px 24px rgba(255, 128, 16, 0.22),
-			inset 0 1px 0 rgba(255, 255, 255, 0.22);
+		background: #FF7A00;
 		font-size: 0.875rem;
 		font-weight: 700;
 		line-height: 1;
@@ -109,7 +106,7 @@
 		min-height: 38px;
 		padding: 10px 14px;
 		border-radius: 12px;
-		background: linear-gradient(180deg, #ff9b1c 0%, #ff7b0d 100%);
+		background: #FF7A00;
 		font-size: 0.6875rem;
 		font-weight: 700;
 		line-height: 1;
@@ -127,7 +124,7 @@
 .logo {
 	display: inline-flex;
 	align-items: center;
-	column-gap: 12px;
+	column-gap: 14px;
 	font-family: var(--font-accent);
 	font-size: 1rem;
 	font-weight: 700;
@@ -137,32 +134,10 @@
 	color: #ffffff;
 
 	&__mark {
-		position: relative;
-		display: inline-flex;
-		width: 28px;
-		height: 28px;
+		display: block;
+		width: 40px;
+		height: 40px;
 		flex-shrink: 0;
-		border-radius: 10px;
-		background: linear-gradient(180deg, #ff9c1d 0%, #ff7d0f 100%);
-		box-shadow:
-			0 6px 16px rgba(255, 128, 16, 0.28),
-			inset 0 1px 0 rgba(255, 255, 255, 0.2);
-	}
-
-	&__mark::before,
-	&__mark::after {
-		content: '';
-		position: absolute;
-		inset: 7px;
-		border: 1.5px solid rgba(255, 255, 255, 0.92);
-		border-radius: 50%;
-	}
-
-	&__mark::after {
-		inset: 10px;
-		border-top-color: transparent;
-		border-left-color: transparent;
-		transform: rotate(18deg);
 	}
 
 	&__text {

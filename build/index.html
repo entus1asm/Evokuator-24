@@ -17,7 +17,7 @@
 			<div class="container">
 				<div class="header__row">
 					<a class="header__logo logo" href="./index.html" aria-label="Эвакуатор 24 часа — главная страница" itemprop="url">
-						<span class="logo__mark" aria-hidden="true"></span>
+						<img class="logo__mark" src="./img/header/header-icon.svg" width="28" height="28" alt="" aria-hidden="true" />
 						<span class="logo__text" itemprop="name">Эвакуатор 24 часа</span>
 					</a>
 
@@ -54,17 +54,25 @@
 		</header>
 		<nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация" aria-hidden="true">
 			<div class="mobile-nav__inner">
-				<a class="mobile-nav__logo logo" href="./index.html" aria-label="Эвакуатор 24 часа — главная страница">
-					<span class="logo__mark" aria-hidden="true"></span>
-					<span class="logo__text">Эвакуатор 24 часа</span>
-				</a>
+				<div class="mobile-nav__top">
+					<a class="mobile-nav__logo logo" href="./index.html" aria-label="Эвакуатор 24 часа — главная страница">
+						<img class="logo__mark" src="./img/header/header-icon.svg" width="28" height="28" alt="" aria-hidden="true" />
+						<span class="logo__text">Эвакуатор 24 часа</span>
+					</a>
 
-				<ul class="mobile-nav__list">
-					<li class="mobile-nav__item"><a href="#services" class="mobile-nav__link">Услуги</a></li>
-					<li class="mobile-nav__item"><a href="#rates" class="mobile-nav__link">Тарифы</a></li>
-					<li class="mobile-nav__item"><a href="#reviews" class="mobile-nav__link">Отзывы</a></li>
-					<li class="mobile-nav__item"><a href="#contacts" class="mobile-nav__link">Контакты</a></li>
-				</ul>
+					<button class="mobile-nav__close" type="button" aria-label="Закрыть мобильное меню">
+						<span class="visually-hidden">Закрыть меню</span>
+					</button>
+				</div>
+
+				<div class="mobile-nav__content">
+					<ul class="mobile-nav__list">
+						<li class="mobile-nav__item"><a href="#services" class="mobile-nav__link">Услуги</a></li>
+						<li class="mobile-nav__item"><a href="#rates" class="mobile-nav__link">Тарифы</a></li>
+						<li class="mobile-nav__item"><a href="#reviews" class="mobile-nav__link">Отзывы</a></li>
+						<li class="mobile-nav__item"><a href="#contacts" class="mobile-nav__link">Контакты</a></li>
+					</ul>
+				</div>
 
 				<a class="mobile-nav__button" href="tel:+79052003333" aria-label="Позвонить в службу эвакуации 8 905 200 33 33">
 					Вызвать эвакуатор
@@ -85,57 +93,69 @@
 							</h1>
 
 							<div class="hero__description">
-								<p class="hero__description-text">Частный эвакуатор без посредников.</p>
 								<p class="hero__description-text">
-									Перевозка легковых автомобилей, кроссоверов, внедорожников и&#160;коммерческого транспорта до&#160;5 тонн. Круглосуточный выезд
-									по&#160;Санкт-Петербургу, Ленинградской области и&#160;на&#160;межгород.
+									Частный эвакуатор без посредников. Перевозка авто до&#160;5 тонн, работа любой сложности.
 								</p>
 							</div>
 
 							<div class="hero__actions" aria-label="Основные действия">
 								<a class="hero__action hero__action--primary" href="tel:+79052003333" aria-label="Вызвать эвакуатор по телефону 8 905 200 33 33">
-									Вызвать сейчас
+									<img class="hero__action-icon" src="./img/hero/phone-icon.svg" width="24" height="24" alt="" aria-hidden="true" />
+									<span class="hero__action-text">Вызвать сейчас</span>
 								</a>
 								<a class="hero__action hero__action--secondary" href="#request-form">
-									Оставить заявку
+									<img class="hero__action-icon" src="./img/hero/request-form-icon.svg" width="24" height="24" alt="" aria-hidden="true" />
+									<span class="hero__action-text">Оставить заявку</span>
 								</a>
 							</div>
 
 							<ul class="hero__benefits" aria-label="Преимущества">
-								<li class="hero__benefit">10 лет опыта</li>
-								<li class="hero__benefit">Подача ~20 мин</li>
+								<li class="hero__benefit">
+									<img class="hero__benefit-icon" src="./img/hero/time-experiance-icon.svg" width="18" height="18" alt="" aria-hidden="true" />
+									<span class="hero__benefit-text">10 лет опыта</span>
+								</li>
+								<li class="hero__benefit">
+									<img class="hero__benefit-icon" src="./img/hero/time-icon.svg" width="18" height="18" alt="" aria-hidden="true" />
+									<span class="hero__benefit-text">Подача ~20 мин</span>
+								</li>
 							</ul>
 						</div>
 
 						<div class="hero__media">
 							<figure class="hero__map">
-								<p class="hero__map-label">Яндекс Карты</p>
-
-								<picture class="hero__map-picture">
-									<img
-										class="hero__map-image"
-										src="./img/hero/hero-map.svg"
-										width="394"
-										height="398"
-										loading="eager"
-										decoding="async"
-										fetchpriority="high"
-										alt="Карта выезда эвакуатора по Санкт-Петербургу и Ленинградской области"
-									/>
-								</picture>
+								<div class="hero__map-picture">
+									<iframe
+										class="hero__map-frame"
+										src="https://yandex.ru/map-widget/v1/-/CPvVbUMy?lang=ru_RU"
+										width="592"
+										height="600"
+										frameborder="0"
+										allowfullscreen="true"
+										loading="lazy"
+										title="Карта района обслуживания эвакуатора"
+									></iframe>
+								</div>
 
 								<figcaption class="hero__map-summary">
-									<p class="hero__map-summary-text">Более 100 положительных отзывов</p>
+									<p class="hero__map-summary-text">
+										Более 100+ положительных отзывов.
+									</p>
 
-									<div class="hero__map-rating" aria-label="Рейтинг 4,8 из 5">
-										<span class="hero__map-rating-value">4,8</span>
-										<span class="hero__map-rating-stars" aria-hidden="true">★★★★★</span>
+									<div class="hero__map-summary-row">
+										<div class="hero__map-rating" aria-label="Рейтинг 4,8 из 5">
+											<span class="hero__map-rating-value">4,8</span>
+											<span class="hero__map-rating-stars" aria-hidden="true">★★★★★</span>
+										</div>
+
+										<ul class="hero__map-platforms" aria-label="Площадки с отзывами">
+											<li class="hero__map-platform">
+												<img src="./img/hero/yandex-map-icon.svg" alt="Иконка яндекс карт" />
+											</li>
+											<li class="hero__map-platform">
+												<img src="./img/hero/avito-app-icon.svg" alt="Иконка Авито" />
+											</li>
+										</ul>
 									</div>
-
-									<ul class="hero__map-platforms" aria-label="Площадки с отзывами">
-										<li class="hero__map-platform">Яндекс</li>
-										<li class="hero__map-platform">2ГИС</li>
-									</ul>
 								</figcaption>
 							</figure>
 						</div>
@@ -144,9 +164,56 @@
 			</section>
 		</main>
 		<footer class="footer">
-			<div class="container">
-				<div class="footer__copyright">
-					<p>&#169; Project Name. Replace this text with your project footer.</p>
+			<div class="footer__container container">
+				<div class="footer__top">
+					<div class="footer__brand">
+						<a class="footer__logo logo" href="./index.html" aria-label="Эвакуатор 24 часа — главная страница">
+							<img class="logo__mark" src="./img/header/header-icon.svg" width="40" height="40" alt="" aria-hidden="true" />
+							<span class="logo__text">Эвакуатор 24 часа</span>
+						</a>
+
+						<p class="footer__tagline">Частный эвакуатор СПб без посредников</p>
+					</div>
+
+					<nav class="footer__nav" aria-label="Навигация в подвале">
+						<ul class="footer__nav-list">
+							<li class="footer__nav-item"><a class="footer__nav-link" href="#services">Услуги</a></li>
+							<li class="footer__nav-item"><a class="footer__nav-link" href="#rates">Тарифы</a></li>
+							<li class="footer__nav-item"><a class="footer__nav-link" href="#reviews">Отзывы</a></li>
+							<li class="footer__nav-item"><a class="footer__nav-link" href="#contacts">Контакты</a></li>
+						</ul>
+					</nav>
+
+					<div class="footer__contacts">
+						<address class="footer__address">
+							<a class="footer__phone" href="tel:+79052003333" aria-label="Позвонить в службу эвакуации 8 905 200 33 33">
+								8 (905) 200-33-33
+							</a>
+						</address>
+
+						<ul class="footer__socials" aria-label="Быстрые способы связи">
+							<li class="footer__social">
+								<a class="footer__social-link" href="https://wa.me/79052003333" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp">
+									<img class="footer__social-icon" src="./img/footer/whatsup-icon.svg" width="24" height="24" alt="" aria-hidden="true" />
+								</a>
+							</li>
+							<li class="footer__social">
+								<a class="footer__social-link" href="#" aria-label="Написать в MAX">
+									<img class="footer__social-icon" src="./img/footer/max-icon.svg" width="24" height="24" alt="" aria-hidden="true" />
+								</a>
+							</li>
+							<li class="footer__social">
+								<a class="footer__social-link" href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+									<img class="footer__social-icon" src="./img/footer/telegram-icon.svg" width="24" height="24" alt="" aria-hidden="true" />
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer__bottom">
+					<p class="footer__copy">&#169; 2026 Эвакуатор 24 часа.</p>
+					<a class="footer__policy" href="./privacy-policy.html">Политика конфиденциальности</a>
 				</div>
 			</div>
 		</footer>

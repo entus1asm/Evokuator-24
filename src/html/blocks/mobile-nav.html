@@ -1,16 +1,31 @@
 <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация" aria-hidden="true">
 	<div class="mobile-nav__inner">
-		<a class="mobile-nav__logo logo" href="./index.html" aria-label="Эвакуатор 24 часа — главная страница">
-			<span class="logo__mark" aria-hidden="true"></span>
-			<span class="logo__text">Эвакуатор 24 часа</span>
-		</a>
+		<div class="mobile-nav__top">
+			<a class="mobile-nav__logo logo" href="./index.html" aria-label="Эвакуатор 24 часа — главная страница">
+				<img
+					class="logo__mark"
+					src="./img/header/header-icon.svg"
+					width="28"
+					height="28"
+					alt=""
+					aria-hidden="true"
+				/>
+				<span class="logo__text">Эвакуатор 24 часа</span>
+			</a>
 
-		<ul class="mobile-nav__list">
-			<li class="mobile-nav__item"><a href="#services" class="mobile-nav__link">Услуги</a></li>
-			<li class="mobile-nav__item"><a href="#rates" class="mobile-nav__link">Тарифы</a></li>
-			<li class="mobile-nav__item"><a href="#reviews" class="mobile-nav__link">Отзывы</a></li>
-			<li class="mobile-nav__item"><a href="#contacts" class="mobile-nav__link">Контакты</a></li>
-		</ul>
+			<button class="mobile-nav__close" type="button" aria-label="Закрыть мобильное меню">
+				<span class="visually-hidden">Закрыть меню</span>
+			</button>
+		</div>
+
+		<div class="mobile-nav__content">
+			<ul class="mobile-nav__list">
+				<li class="mobile-nav__item"><a href="#services" class="mobile-nav__link">Услуги</a></li>
+				<li class="mobile-nav__item"><a href="#rates" class="mobile-nav__link">Тарифы</a></li>
+				<li class="mobile-nav__item"><a href="#reviews" class="mobile-nav__link">Отзывы</a></li>
+				<li class="mobile-nav__item"><a href="#contacts" class="mobile-nav__link">Контакты</a></li>
+			</ul>
+		</div>
 
 		<a
 			class="mobile-nav__button"

@@ -10,11 +10,11 @@ body {
 	min-width: 320px;
 	background-color: var(--page-bg);
 	background-image:
-		radial-gradient(circle at 18% 22%, rgba(255, 129, 18, 0.18), transparent 34%),
+		radial-gradient(circle at 18% 22%, rgba(255, 129, 18, 0.05), transparent 34%),
 		linear-gradient(96deg, #241308 0%, #0a0b0c 100%);
 	background-repeat: no-repeat;
 	background-position: top center;
-	background-size: 100% 980px;
+	background-size: 100% 100%;
 	color: var(--text-color);
 	font-family: var(--font-main);
 	font-size: 16px;
