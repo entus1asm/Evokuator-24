@@ -1,28 +1,22 @@
 .reviews {
-	padding: 104px 0 118px;
+	padding: 96px 0;
 	background: #ffffff;
 	color: #232729;
 	overflow: hidden;
 
 	&__head {
 		max-width: 620px;
-		margin: 0 auto 42px;
+		margin: 0 auto 40px;
 		text-align: center;
 	}
 
 	&__title {
-		margin-bottom: 10px;
-		font-size: 3.25rem;
-		font-weight: 700;
-		line-height: 1.04;
-		letter-spacing: -0.05em;
-		color: #2d3133;
+		@extend %section-title-base;
+		margin-bottom: 14px;
 	}
 
 	&__subtitle {
-		font-size: 0.9375rem;
-		line-height: 1.5;
-		color: #a6a9ad;
+		@extend %section-supporting-text-base;
 	}
 
 	&__slider {
@@ -89,9 +83,9 @@
 		right: 14px;
 		bottom: 12px;
 		z-index: 1;
-		font-size: 0.75rem;
+		font-size: 0.8125rem;
 		font-weight: 600;
-		line-height: 1.3;
+		line-height: 1.35;
 		color: #ffffff;
 	}
 
@@ -112,12 +106,17 @@
 		align-items: flex-start;
 		justify-content: space-between;
 		column-gap: 24px;
-		row-gap: 16px;
+		row-gap: 20px;
 		margin-bottom: 28px;
 	}
 
+	&__proof-main {
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+	}
+
 	&__proof-title {
-		margin-bottom: 8px;
 		font-size: 2rem;
 		font-weight: 700;
 		line-height: 1.08;
@@ -129,7 +128,6 @@
 		display: flex;
 		align-items: center;
 		column-gap: 12px;
-		margin-bottom: 2px;
 	}
 
 	&__proof-rating-value {
@@ -147,9 +145,10 @@
 	}
 
 	&__proof-caption {
-		font-size: 0.6875rem;
+		margin: 0;
+		font-size: 0.75rem;
 		font-weight: 700;
-		line-height: 1.25;
+		line-height: 1.4;
 		text-transform: uppercase;
 		letter-spacing: 0.14em;
 		color: #d0d2d5;
@@ -174,9 +173,9 @@
 	}
 
 	&__proof-badge-text {
-		font-size: 0.6875rem;
+		font-size: 0.75rem;
 		font-weight: 700;
-		line-height: 1.2;
+		line-height: 1.3;
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
 		color: #c2c5c8;
@@ -187,7 +186,6 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: 22px;
-		margin-bottom: 28px;
 		padding-bottom: 28px;
 		overflow: hidden;
 	}
@@ -198,7 +196,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		height: 82px;
+		height: 200px;
 		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 82%);
 		pointer-events: none;
 	}
@@ -221,17 +219,13 @@
 	}
 
 	&__proof-avatar {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
+		display: block;
 		width: 32px;
 		height: 32px;
 		border-radius: 50%;
+		object-fit: cover;
 		background: #f0f1f3;
-		font-size: 0.75rem;
-		font-weight: 700;
-		line-height: 1;
-		color: #6c7074;
+		flex-shrink: 0;
 	}
 
 	&__proof-name {
@@ -283,10 +277,6 @@
 	}
 
 	@include laptop {
-		&__title {
-			font-size: 2.875rem;
-		}
-
 		&__proof {
 			padding-right: 30px;
 			padding-left: 30px;
@@ -294,7 +284,7 @@
 	}
 
 	@include tablet {
-		padding: 82px 0 94px;
+		padding: 72px 0;
 
 		&__slider {
 			margin-bottom: 54px;
@@ -315,18 +305,10 @@
 	}
 
 	@include mobile {
-		padding: 64px 0 76px;
+		padding: 56px 0;
 
 		&__head {
 			margin-bottom: 32px;
-		}
-
-		&__title {
-			font-size: 2.25rem;
-		}
-
-		&__subtitle {
-			font-size: 0.875rem;
 		}
 
 		&__slider {

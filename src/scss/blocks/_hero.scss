@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	box-sizing: border-box;
-	padding: 40px 0 100px;
+	padding: 40px 0 90px;
 	min-height: calc(100vh - 88px);
 	min-height: calc(100svh - 88px);
 	background: transparent;
@@ -20,7 +20,25 @@
 	}
 
 	&__content {
+		position: relative;
+		z-index: 1;
 		padding-top: 0;
+	}
+
+	&__content::before {
+		content: '';
+		position: absolute;
+		top: 86px;
+		left: -118px;
+		z-index: -1;
+		width: 620px;
+		height: 620px;
+		border-radius: 50%;
+		background:
+			radial-gradient(circle, rgba(255, 120, 26, 0.22) 0%, rgba(255, 120, 26, 0.14) 28%, rgba(255, 120, 26, 0.05) 50%, rgba(255, 120, 26, 0) 74%);
+		filter: blur(28px);
+		opacity: 0.95;
+		pointer-events: none;
 	}
 
 	&__badge {
@@ -340,6 +358,13 @@
 			row-gap: 12px;
 		}
 
+		&__content::before {
+			top: 66px;
+			left: -88px;
+			width: 540px;
+			height: 540px;
+		}
+
 		&__description {
 			max-width: 520px;
 			margin-bottom: 32px;
@@ -382,6 +407,14 @@
 
 		&__content {
 			max-width: none;
+		}
+
+		&__content::before {
+			top: 74px;
+			left: -72px;
+			width: 500px;
+			height: 500px;
+			filter: blur(24px);
 		}
 
 		&__badge {
@@ -454,6 +487,14 @@
 			margin-bottom: 22px;
 			font-size: 0.625rem;
 			letter-spacing: 0.05em;
+		}
+
+		&__content::before {
+			top: 52px;
+			left: -50px;
+			width: 360px;
+			height: 360px;
+			filter: blur(20px);
 		}
 
 		&__badge-indicator {
@@ -595,6 +636,14 @@
 			row-gap: 8px;
 		}
 
+		&__content::before {
+			top: 42px;
+			left: -40px;
+			width: 300px;
+			height: 300px;
+			filter: blur(18px);
+		}
+
 		&__description {
 			margin-bottom: 22px;
 		}
@@ -667,6 +716,14 @@
 
 		&__title {
 			font-size: 2.25rem;
+		}
+
+		&__content::before {
+			top: 34px;
+			left: -30px;
+			width: 260px;
+			height: 260px;
+			filter: blur(16px);
 		}
 
 		&__description-text {

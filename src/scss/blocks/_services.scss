@@ -1,27 +1,21 @@
 .services {
-	padding: 92px 0 104px;
+	padding: 96px 0;
 	background: #ffffff;
 	color: #212426;
 
 	&__head {
 		max-width: 520px;
-		margin-bottom: 34px;
+		margin-bottom: 40px;
 	}
 
 	&__title {
-		margin-bottom: 12px;
-		font-size: 3.25rem;
-		font-weight: 700;
-		line-height: 1.04;
-		letter-spacing: -0.04em;
-		color: #2b2f31;
+		@extend %section-title-base;
+		margin-bottom: 14px;
 	}
 
 	&__description {
+		@extend %section-supporting-text-base;
 		max-width: 430px;
-		font-size: 1rem;
-		line-height: 1.55;
-		color: #9a9ea2;
 	}
 
 	&__list {
@@ -120,7 +114,7 @@
 	}
 
 	&__card:not(.services__card--featured) &__number {
-		margin-bottom: auto;
+		margin-bottom: 14px;
 		background: transparent;
 		width: auto;
 		min-height: 0;
@@ -134,16 +128,20 @@
 	&__card-title {
 		margin-top: auto;
 		margin-bottom: 10px;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		font-weight: 700;
 		line-height: 1.18;
 		letter-spacing: -0.02em;
 		color: #2b2f31;
 	}
 
+	&__card:not(.services__card--featured) &__card-title {
+		margin-top: 0;
+	}
+
 	&__card-text {
 		max-width: 350px;
-		font-size: 0.9375rem;
+		font-size: 1rem;
 		line-height: 1.55;
 		color: #9a9ea2;
 	}
@@ -157,42 +155,39 @@
 	&__card--featured &__card-text {
 		max-width: 470px;
 		font-size: 1rem;
-		color: rgba(255, 255, 255, 0.78);
+		line-height: 1.55;
+		color: rgba(255, 255, 255, 0.8);
 	}
 
 	&__card--tall &__card-title {
 		max-width: 260px;
-		font-size: 1.0625rem;
 	}
 
 	&__card--tall &__card-text {
 		max-width: 250px;
-		font-size: 0.9375rem;
 	}
 
 	&__card--small &__card-title,
 	&__card--wide &__card-title {
-		font-size: 0.9375rem;
+		max-width: 260px;
 	}
 
-	&__card--small &__card-text,
-	&__card--wide &__card-text {
+	&__card--small &__card-text {
 		max-width: 320px;
-		font-size: 0.875rem;
+	}
+
+	&__card--wide &__card-text {
+		max-width: 520px;
 	}
 
 	@include laptop {
-		&__title {
-			font-size: 2.75rem;
-		}
-
 		&__card--featured &__card-title {
 			font-size: 1.75rem;
 		}
 	}
 
 	@include tablet {
-		padding: 76px 0 84px;
+		padding: 72px 0;
 
 		&__head {
 			margin-bottom: 28px;
@@ -222,15 +217,7 @@
 	}
 
 	@include mobile {
-		padding: 58px 0 64px;
-
-		&__title {
-			font-size: 2.125rem;
-		}
-
-		&__description {
-			font-size: 0.9375rem;
-		}
+		padding: 56px 0;
 
 		&__list {
 			grid-template-columns: 1fr;
@@ -275,7 +262,7 @@
 		&__card--tall &__card-text,
 		&__card--small &__card-text,
 		&__card--wide &__card-text {
-			font-size: 0.9375rem;
+			font-size: 1rem;
 		}
 	}
 }

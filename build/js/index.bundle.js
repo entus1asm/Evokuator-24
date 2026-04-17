@@ -502,6 +502,179 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/js/modules/callback-form.js":
+/*!*****************************************!*\
+  !*** ./src/js/modules/callback-form.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+function callbackForm() {
+	const form = document.querySelector(".js-callback-form");
+
+	if (!form) {
+		return;
+	}
+
+	const submitButton = form.querySelector(".contacts-cta__button");
+	const submitButtonText = form.querySelector(".contacts-cta__button-text");
+	const status = form.querySelector(".contacts-cta__status");
+	const phoneInput = form.querySelector('input[name="phone"]');
+	const nameInput = form.querySelector('input[name="name"]');
+	const consentInput = form.querySelector('input[name="consent"]');
+	const defaultButtonText = submitButtonText ? submitButtonText.textContent : "";
+
+	const validatePhone = () => {
+		if (!phoneInput) {
+			return true;
+		}
+
+		const digits = phoneInput.value.replace(/\D/g, "");
+
+		if (!digits.length) {
+			phoneInput.setCustomValidity("");
+			return false;
+		}
+
+		if (digits.length < 11) {
+			phoneInput.setCustomValidity("Введите телефон полностью");
+			return false;
+		}
+
+		phoneInput.setCustomValidity("");
+		return true;
+	};
+
+	const sanitizeName = (value) => value.replace(/\d+/g, "");
+
+	const validateConsent = () => {
+		if (!consentInput) {
+			return true;
+		}
+
+		if (!consentInput.checked) {
+			consentInput.setCustomValidity("Подтвердите согласие с политикой конфиденциальности");
+			return false;
+		}
+
+		consentInput.setCustomValidity("");
+		return true;
+	};
+
+	const setStatus = (message, type = "") => {
+		if (!status) {
+			return;
+		}
+
+		status.textContent = message;
+		status.classList.remove("is-success", "is-error");
+
+		if (type) {
+			status.classList.add(`is-${type}`);
+		}
+	};
+
+	const setSubmittingState = (isSubmitting) => {
+		if (submitButton) {
+			submitButton.disabled = isSubmitting;
+		}
+
+		form.setAttribute("aria-busy", String(isSubmitting));
+
+		if (submitButtonText) {
+			submitButtonText.textContent = isSubmitting ? "Отправляем..." : defaultButtonText;
+		}
+	};
+
+	if (phoneInput) {
+		phoneInput.addEventListener("input", validatePhone);
+		phoneInput.addEventListener("blur", validatePhone);
+	}
+
+	if (nameInput) {
+		nameInput.addEventListener("keydown", (event) => {
+			if (event.ctrlKey || event.metaKey || event.altKey) {
+				return;
+			}
+
+			if (/\d/.test(event.key)) {
+				event.preventDefault();
+			}
+		});
+
+		nameInput.addEventListener("input", () => {
+			const sanitizedValue = sanitizeName(nameInput.value);
+
+			if (sanitizedValue !== nameInput.value) {
+				nameInput.value = sanitizedValue;
+			}
+		});
+
+		nameInput.addEventListener("paste", () => {
+			requestAnimationFrame(() => {
+				nameInput.value = sanitizeName(nameInput.value);
+			});
+		});
+	}
+
+	if (consentInput) {
+		consentInput.addEventListener("change", () => {
+			validateConsent();
+
+			if (consentInput.checked) {
+				setStatus("");
+			}
+		});
+	}
+
+	form.addEventListener("submit", async (event) => {
+		event.preventDefault();
+
+		validatePhone();
+		validateConsent();
+
+		if (!form.reportValidity()) {
+			if (consentInput && !consentInput.checked) {
+				setStatus("Подтвердите согласие с политикой конфиденциальности и обработкой персональных данных.", "error");
+			}
+
+			return;
+		}
+
+		setSubmittingState(true);
+		setStatus("");
+
+		try {
+			const response = await fetch(form.action, {
+				method: "POST",
+				body: new FormData(form),
+				headers: {
+					"X-Requested-With": "XMLHttpRequest",
+				},
+			});
+
+			const result = await response.json().catch(() => null);
+
+			if (!response.ok || !result || !result.success) {
+				throw new Error(result?.message || "Не удалось отправить заявку. Попробуйте еще раз.");
+			}
+
+			form.reset();
+			validateConsent();
+			setStatus(result.message || "Заявка отправлена. Скоро перезвоним.", "success");
+		} catch (error) {
+			setStatus(error.message || "Не удалось отправить заявку. Попробуйте еще раз.", "error");
+		} finally {
+			setSubmittingState(false);
+		}
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (callbackForm);
+
+
+/***/ }),
+
 /***/ "./src/js/modules/mobile-nav.js":
 /*!**************************************!*\
   !*** ./src/js/modules/mobile-nav.js ***!
@@ -587,6 +760,147 @@ function mobileNav() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (mobileNav);
+
+
+/***/ }),
+
+/***/ "./src/js/modules/phone-mask.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/phone-mask.js ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+function phoneMask() {
+	const phoneInputs = document.querySelectorAll("[data-phone-mask]");
+
+	if (!phoneInputs.length) {
+		return;
+	}
+
+	const getDigits = (value) => value.replace(/\D/g, "");
+
+	const normalizeDigits = (value) => {
+		let digits = getDigits(value);
+
+		if (!digits.length) {
+			return "7";
+		}
+
+		if (digits[0] === "8") {
+			digits = `7${digits.slice(1)}`;
+		} else if (digits[0] === "9") {
+			digits = `7${digits}`;
+		} else if (digits[0] !== "7") {
+			digits = `7${digits}`;
+		}
+
+		return digits.slice(0, 11);
+	};
+
+	const formatPhone = (value) => {
+		const digits = normalizeDigits(value);
+		const localNumber = digits.slice(1);
+		let result = "+7";
+
+		if (!localNumber.length) {
+			return result;
+		}
+
+		result += ` (${localNumber.slice(0, 3)}`;
+
+		if (localNumber.length >= 3) {
+			result += ")";
+		}
+
+		if (localNumber.length > 3) {
+			result += ` ${localNumber.slice(3, 6)}`;
+		}
+
+		if (localNumber.length > 6) {
+			result += `-${localNumber.slice(6, 8)}`;
+		}
+
+		if (localNumber.length > 8) {
+			result += `-${localNumber.slice(8, 10)}`;
+		}
+
+		return result;
+	};
+
+	const setCursorToEnd = (input) => {
+		requestAnimationFrame(() => {
+			const position = input.value.length;
+			input.setSelectionRange(position, position);
+		});
+	};
+
+	phoneInputs.forEach((input) => {
+		const applyMask = () => {
+			input.value = formatPhone(input.value);
+		};
+
+		if (!input.value) {
+			input.value = "+7";
+		} else {
+			applyMask();
+		}
+
+		input.addEventListener("focus", () => {
+			if (!input.value) {
+				input.value = "+7";
+			}
+
+			if (input.selectionStart !== null && input.selectionStart < 2) {
+				setCursorToEnd(input);
+			}
+		});
+
+		input.addEventListener("input", () => {
+			applyMask();
+			setCursorToEnd(input);
+		});
+
+		input.addEventListener("paste", () => {
+			requestAnimationFrame(() => {
+				applyMask();
+				setCursorToEnd(input);
+			});
+		});
+
+		input.addEventListener("blur", () => {
+			input.value = formatPhone(input.value);
+		});
+
+		input.addEventListener("keydown", (event) => {
+			const allowedKeys = [
+				"Backspace",
+				"Delete",
+				"Tab",
+				"ArrowLeft",
+				"ArrowRight",
+				"Home",
+				"End",
+			];
+
+			if (event.ctrlKey || event.metaKey || allowedKeys.includes(event.key)) {
+				if ((event.key === "Backspace" || event.key === "Delete") && getDigits(input.value).length <= 1) {
+					event.preventDefault();
+					input.value = "+7";
+					setCursorToEnd(input);
+				}
+
+				return;
+			}
+
+			if (!/\d/.test(event.key)) {
+				event.preventDefault();
+			}
+		});
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (phoneMask);
 
 
 /***/ }),
@@ -11051,20 +11365,22 @@ var __webpack_exports__ = {};
   \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_mobile_nav_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/mobile-nav.js */ "./src/js/modules/mobile-nav.js");
-/* harmony import */ var _modules_reviews_slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/reviews-slider.js */ "./src/js/modules/reviews-slider.js");
+/* harmony import */ var _modules_callback_form_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/callback-form.js */ "./src/js/modules/callback-form.js");
+/* harmony import */ var _modules_phone_mask_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/phone-mask.js */ "./src/js/modules/phone-mask.js");
+/* harmony import */ var _modules_reviews_slider_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/reviews-slider.js */ "./src/js/modules/reviews-slider.js");
 // import { Fancybox } from '@fancyapps/ui';
 // import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector("[data-fancybox]")) {
-    Fancybox.bind("[data-fancybox]", {});
-  }
 
+
+document.addEventListener("DOMContentLoaded", () => {
   (0,_modules_mobile_nav_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  (0,_modules_reviews_slider_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  (0,_modules_callback_form_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  (0,_modules_phone_mask_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  (0,_modules_reviews_slider_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 });
 
 }();

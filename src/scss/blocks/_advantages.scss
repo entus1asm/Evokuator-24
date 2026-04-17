@@ -1,5 +1,5 @@
 .advantages {
-	padding: 94px 0 104px;
+	padding: 96px 0;
 	background: #ffffff;
 	color: #1f2528;
 
@@ -42,7 +42,7 @@
 
 	&__item-text {
 		max-width: none;
-		font-size: 0.9375rem;
+		font-size: 1rem;
 		line-height: 1.55;
 		color: #8f9195;
 	}
@@ -58,12 +58,12 @@
 		}
 
 		&__item-text {
-			font-size: 0.875rem;
+			font-size: 1rem;
 		}
 	}
 
 	@include tablet {
-		padding: 72px 0 80px;
+		padding: 72px 0;
 
 		&__list {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -75,7 +75,7 @@
 	}
 
 	@include mobile {
-		padding: 56px 0 64px;
+		padding: 56px 0;
 
 		&__list {
 			grid-template-columns: 1fr;
@@ -97,7 +97,7 @@
 
 		&__item-text {
 			max-width: none;
-			font-size: 0.9375rem;
+			font-size: 1rem;
 		}
 	}
 }

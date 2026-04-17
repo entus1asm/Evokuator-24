@@ -11,11 +11,11 @@ body {
 	min-width: 320px;
 	background-color: var(--page-bg);
 	background-image:
-		radial-gradient(circle at 18% 22%, rgba(255, 129, 18, 0.05), transparent 34%),
-		linear-gradient(96deg, #241308 0%, #0a0b0c 100%);
+		radial-gradient(circle at 28% 42%, rgba(255, 120, 26, 0.1) 0%, rgba(255, 120, 26, 0.06) 24%, rgba(255, 120, 26, 0.02) 38%, rgba(255, 120, 26, 0) 58%),
+		linear-gradient(90deg, #140c08 0%, #130f0c 18%, #0c0f0f 52%, #0c0f0f 100%);
 	background-repeat: no-repeat;
 	background-position: top center;
-	background-size: 100% 100%;
+	background-size: 100% 980px;
 	color: var(--text-color);
 	font-family: var(--font-main);
 	font-size: 16px;
@@ -56,6 +56,52 @@ h6 {
 .title-2 {
 	font-size: clamp(1.75rem, 3vw, 2.5rem);
 	font-weight: 700;
+}
+
+%section-title-base {
+	font-size: 3.25rem;
+	font-weight: 700;
+	line-height: 1.04;
+	letter-spacing: -0.05em;
+	color: #2d3133;
+
+	@include laptop {
+		font-size: 3rem;
+	}
+
+	@include mobile {
+		font-size: 2.25rem;
+	}
+}
+
+%section-supporting-text-base {
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.55;
+	color: #9aa0a4;
+}
+
+%section-eyebrow-base {
+	font-size: 0.875rem;
+	font-weight: 700;
+	line-height: 1.35;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	color: #b0b3b6;
+}
+
+%card-title-base {
+	font-size: 1.125rem;
+	font-weight: 700;
+	line-height: 1.28;
+	letter-spacing: -0.02em;
+	color: #2f3335;
+}
+
+%card-text-base {
+	font-size: 1rem;
+	line-height: 1.55;
+	color: #979ca0;
 }
 
 code {

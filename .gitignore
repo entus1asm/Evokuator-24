@@ -1,3 +1,6 @@
 node_modules
 .webp
 .DS_Store
+src/files/callback-config.php
+build/files/callback-config.php
+docs/files/callback-config.php
